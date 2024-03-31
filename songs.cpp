@@ -1,5 +1,4 @@
-//×÷Õß£ºÍõºÆÒã
-//´ËÎÄ¼ş°üº¬ÓëBGMÓĞ¹ØµÄ¸÷ÖÖº¯Êı
+//æ­¤æ–‡ä»¶åŒ…å«ä¸BGMæœ‰å…³çš„å„ç§å‡½æ•°
 #include<easyx.h>
 #include<stdio.h>
 #include<graphics.h>
@@ -13,32 +12,32 @@ IMAGE tempimage;
 ExMessage msg1;
 void closeBGM() {
 	mciSendString("close BGM", 0, 0, 0);
-}//¹Ø±ÕBGMµÄº¯Êı
+}//å…³é—­BGMçš„å‡½æ•°
 void paintmusicplayer() {
-	loadimage(&player, "µã³ª»ú.png");
+	loadimage(&player, "ç‚¹å”±æœº.png");
 }
 void musicplayer() {
-	getimage(&tempimage, 0, 0, 1200, 675);//¼ÇÂ¼ÔÚµã»÷µã³ª»úÇ°µÄÆåÅÌ×´Ì¬
+	getimage(&tempimage, 0, 0, 1200, 675);//è®°å½•åœ¨ç‚¹å‡»ç‚¹å”±æœºå‰çš„æ£‹ç›˜çŠ¶æ€
 	cleardevice();
-	putimage(0, 0, &player);//µã³ª»úµÄÌùÍ¼
+	putimage(0, 0, &player);//ç‚¹å”±æœºçš„è´´å›¾
 	while (1) {
 		getmessage(&msg1);
 		if (msg1.x >= 805 && msg1.x <= 1150 && msg1.y >= 230 && msg1.y <= 270 && msg1.message == WM_LBUTTONDOWN) {
-			closeBGM();//½«ÏÖÔÚÕıÔÚ²¥·ÅµÄBGM¹Ø±Õ
-			mciSendString("open ./´ºÏÒ.mp3 alias BGM", 0, 0, 0);
+			closeBGM();//å°†ç°åœ¨æ­£åœ¨æ’­æ”¾çš„BGMå…³é—­
+			mciSendString("open ./æ˜¥å¼¦.mp3 alias BGM", 0, 0, 0);
 			mciSendString("play BGM repeat", 0, 0, 0);
-			musicplay = 1;//musicplay=1±íÊ¾ÒôÀÖÔÚ²¥·Å
+			musicplay = 1;//musicplay=1è¡¨ç¤ºéŸ³ä¹åœ¨æ’­æ”¾
 		}
 		if (msg1.x >= 805 && msg1.x <= 1150 && msg1.y >= 285 && msg1.y <= 320 && msg1.message == WM_LBUTTONDOWN) {
 			closeBGM();
 
-			mciSendString("open ./ÒÅ³¾Âş²½.mp3 alias BGM", 0, 0, 0);
+			mciSendString("open ./é—å°˜æ¼«æ­¥.mp3 alias BGM", 0, 0, 0);
 			mciSendString("play BGM repeat", 0, 0, 0);
 			musicplay = 1;
 		}
 		if (msg1.x >= 805 && msg1.x <= 1150 && msg1.y >= 340 && msg1.y <= 380 && msg1.message == WM_LBUTTONDOWN) {
 			closeBGM();
-			mciSendString("open ./¸²³±Ö®ÏÂ.mp3 alias BGM", 0, 0, 0);
+			mciSendString("open ./è¦†æ½®ä¹‹ä¸‹.mp3 alias BGM", 0, 0, 0);
 			mciSendString("play BGM repeat", 0, 0, 0);
 			musicplay = 1;
 		}
@@ -62,14 +61,14 @@ void musicplayer() {
 		}
 		if (msg1.x >= 1060 && msg1.x <= 1110 && msg1.y >= 560 && msg1.y <= 575 && msg1.message == WM_LBUTTONDOWN) {
 			mciSendString("play BGM repeat", 0, 0, 0);
-			musicplay = 1;//²¥·Å°´Å¥
+			musicplay = 1;//æ’­æ”¾æŒ‰é’®
 		}
 		if (msg1.x >= 940 && msg1.x <= 985 && msg1.y >= 565 && msg1.y <= 585 && msg1.message == WM_LBUTTONDOWN) {
 			mciSendString("pause BGM", 0, 0, 0);
-			musicplay = 0;//ÔİÍ£°´Å¥
+			musicplay = 0;//æš‚åœæŒ‰é’®
 		}
 		if (msg1.x >= 820 && msg1.x <= 880 && msg1.y >= 555 && msg1.y <= 590 && msg1.message == WM_LBUTTONDOWN) {
-			putimage(0, 0, &tempimage);//ÍË³ö°´Å¥£¬·µ»ØÉÏÒ»¼¶½çÃæ
+			putimage(0, 0, &tempimage);//é€€å‡ºæŒ‰é’®ï¼Œè¿”å›ä¸Šä¸€çº§ç•Œé¢
 			return;
 		}
 
