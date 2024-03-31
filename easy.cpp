@@ -1,5 +1,4 @@
-//×÷Õß£ºÍõºÆÒã
-//´ËÎÄ¼ş°üº¬¼òµ¥Ä£Ê½µÄÏà¹ØËã·¨
+//æ­¤æ–‡ä»¶åŒ…å«ç®€å•æ¨¡å¼çš„ç›¸å…³ç®—æ³•
 #include"tizino.h"
 #include "jiegouti.h"
 #include"easy.h"
@@ -15,37 +14,37 @@ extern position board[9][9];
 extern IMAGE bk;
 extern IMAGE white;
 extern IMAGE tip;
-extern random_device rd;//ÓÃÓÚÉú³ÉËæ»úÊıÖÖ×Ó
+extern random_device rd;//ç”¨äºç”Ÿæˆéšæœºæ•°ç§å­
 
 void xiaqi_easy() {
-	memset(oki, 0, sizeof(oki));//±íÊ¾¿ÉÏÂÆåµÄiÎ»ÖÃ
-	memset(okj, 0, sizeof(okj));//±íÊ¾¿ÉÏÂÆåµÄjÎ»ÖÃ
-	oknum = 0;//±íÊ¾¿ÉÏÂÆåµÄÎ»ÖÃ¸öÊı
-	bool finish = true;//Ö¸Ê¾ÓÎÏ·ÊÇ·ñ½áÊøµÄ±äÁ¿
+	memset(oki, 0, sizeof(oki));//è¡¨ç¤ºå¯ä¸‹æ£‹çš„iä½ç½®
+	memset(okj, 0, sizeof(okj));//è¡¨ç¤ºå¯ä¸‹æ£‹çš„jä½ç½®
+	oknum = 0;//è¡¨ç¤ºå¯ä¸‹æ£‹çš„ä½ç½®ä¸ªæ•°
+	bool finish = true;//æŒ‡ç¤ºæ¸¸æˆæ˜¯å¦ç»“æŸçš„å˜é‡
 	for (int i = 1; i <= 9; i++) {
-		for (int j = 1; j <= 9; j++) {//±éÀú£¬³¢ÊÔijÎ»ÖÃÄÜ·ñÂä°××Ó
+		for (int j = 1; j <= 9; j++) {//éå†ï¼Œå°è¯•ijä½ç½®èƒ½å¦è½ç™½å­
 			if (gameboard[i][j] == 0) {
 				gameboard[i][j] = 2;
 				if (tizi_no(i, j, 2)) {
 					finish = false;
 					oki[oknum] = i;
-					okj[oknum] = j;//Ã¿¸öoknum¿ÉÒÔ¶ÔÓ¦Ò»¸öijÖµ
+					okj[oknum] = j;//æ¯ä¸ªoknumå¯ä»¥å¯¹åº”ä¸€ä¸ªijå€¼
 					oknum++;
 				}gameboard[i][j] = 0;
 			}
 		}
 	}
-	if (finish) {//Èç¹ûfinishÖµÎªtrueÔòÓÎÏ·½áÊø
+	if (finish) {//å¦‚æœfinishå€¼ä¸ºtrueåˆ™æ¸¸æˆç»“æŸ
 		jnow = -1; return;
 	}
 	else {
-		mt19937 randomok(rd());//Ëæ»úÊıÉú³ÉÆ÷
-		uniform_int_distribution<int> dis(0, oknum - 1);//ÔÚ¿ÉÒÔÏÂµÄÎ»ÖÃËæ»úÉú³ÉÒ»¸öÎ»ÖÃ
+		mt19937 randomok(rd());//éšæœºæ•°ç”Ÿæˆå™¨
+		uniform_int_distribution<int> dis(0, oknum - 1);//åœ¨å¯ä»¥ä¸‹çš„ä½ç½®éšæœºç”Ÿæˆä¸€ä¸ªä½ç½®
 		int x = dis(randomok);
 		inow = oki[x];
 		jnow = okj[x];
 		gameboard[inow][jnow] = 2;
 		putimage(board[inow - 1][jnow - 1].x - 22, board[inow - 1][jnow - 1].y - 30, &bk, SRCPAINT);
-		putimage(board[inow - 1][jnow - 1].x - 22, board[inow - 1][jnow - 1].y - 30, &tip, SRCAND);//ÏÂÆåµÄÌùÍ¼
+		putimage(board[inow - 1][jnow - 1].x - 22, board[inow - 1][jnow - 1].y - 30, &tip, SRCAND);//ä¸‹æ£‹çš„è´´å›¾
 	}
 }
