@@ -1,4 +1,3 @@
-﻿//作者：王浩毅
 //此文件包含与开始界面相关的函数
 #include<random>
 #include <iostream>
