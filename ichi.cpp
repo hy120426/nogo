@@ -1,5 +1,4 @@
-//×÷Õß£ºÍõºÆÒã
-//´ËÎÄ¼þ°üº¬ÆåÅÌµÄ¾ßÌåÐÅÏ¢
+//æ­¤æ–‡ä»¶åŒ…å«æ£‹ç›˜çš„å…·ä½“ä¿¡æ¯
 #include "ichi.h"
 #include"jiegouti.h"
 #include<cmath>
@@ -16,7 +15,7 @@ extern int positiony;
 extern int inow;
 
 void gedian()
-{//ÓÉÓÚÆåÅÌ²»ÊÇÕýÊÓÍ¼£¬¸ñµãÎ»ÖÃ²»¹æÔò£¬ÓÃÕâ¸öº¯ÊýÀ´¼ÇÂ¼Ã¿¸ö¸ñµãÔÚÆåÅÌÉÏµÄÎ»ÖÃ
+{//ç”±äºŽæ£‹ç›˜ä¸æ˜¯æ­£è§†å›¾ï¼Œæ ¼ç‚¹ä½ç½®ä¸è§„åˆ™ï¼Œç”¨è¿™ä¸ªå‡½æ•°æ¥è®°å½•æ¯ä¸ªæ ¼ç‚¹åœ¨æ£‹ç›˜ä¸Šçš„ä½ç½®
 	board[0][0].x = 446;
 	board[0][0].y = 95;
 	for (int i = 0; i < 9; i++) {
@@ -74,22 +73,22 @@ void gedian()
 }
 
 bool luozi(int x, int y)
-{//ÓÃÕâ¸öº¯Êý´¦ÀíÍæ¼ÒÏÂÆåÊ±µÄÌùÍ¼ÎÊÌâ
+{//ç”¨è¿™ä¸ªå‡½æ•°å¤„ç†çŽ©å®¶ä¸‹æ£‹æ—¶çš„è´´å›¾é—®é¢˜
 	positionx = -1; positiony = -1;
 	for (int i = 0; i < 9; i++) { if (abs(y - board[i][0].y) < 17) { positiony = i; break; } }
-	if (positiony < 0)return 0;//ÅÐ¶ÏÊÇ·ñÏÂÔÚÁËÆåÅÌÍâ£¬Èç¹ûÏÂÔÚÆåÅÌÍâÔòÂä×ÓÊ§°Ü£¬·µ»Ø0
+	if (positiony < 0)return 0;//åˆ¤æ–­æ˜¯å¦ä¸‹åœ¨äº†æ£‹ç›˜å¤–ï¼Œå¦‚æžœä¸‹åœ¨æ£‹ç›˜å¤–åˆ™è½å­å¤±è´¥ï¼Œè¿”å›ž0
 	for (int i = 0; i < 9; i++) { if (2 * abs(x - board[positiony][i].x) < delta[positiony]) { positionx = i; break; } }
 	if (positionx < 0)return 0;
-	if (gameboard[positiony + 1][positionx + 1])return 0;//Èç¹û´ËµãÓÐÆå×ÓÔòÂä×ÓÊ§°Ü£¬·µ»Ø0
+	if (gameboard[positiony + 1][positionx + 1])return 0;//å¦‚æžœæ­¤ç‚¹æœ‰æ£‹å­åˆ™è½å­å¤±è´¥ï¼Œè¿”å›ž0
 	if (inow == -2) {
-		if (positionx + 1 == 5 && positiony + 1 == 5)return 0;//Èç¹ûµÚÒ»ÊÖÏÂÔÚÖÐ¼ä£¬ÔòÂä×ÓÊ§°Ü£¬·µ»Ø0
+		if (positionx + 1 == 5 && positiony + 1 == 5)return 0;//å¦‚æžœç¬¬ä¸€æ‰‹ä¸‹åœ¨ä¸­é—´ï¼Œåˆ™è½å­å¤±è´¥ï¼Œè¿”å›ž0
 	}
-	fuzhi();//¸´ÖÆµ±Ç°ÆåÅÌ×´Ì¬£¬»ÚÆåÊ±ÒªÓÃ
+	fuzhi();//å¤åˆ¶å½“å‰æ£‹ç›˜çŠ¶æ€ï¼Œæ‚”æ£‹æ—¶è¦ç”¨
 	gameboard[positiony + 1][positionx + 1] = 1;
 
 	putimage(board[positiony][positionx].x - 22, board[positiony][positionx].y - 30, &bk, SRCPAINT);
 	putimage(board[positiony][positionx].x - 22, board[positiony][positionx].y - 30, &black, SRCAND);
-	//¼õÊýÊÇÎªÁËÈÃÆå×ÓµÄÖÐÐÄÂäÔÚ¸ñµãÉÏ£¬¾ßÌåµÄÊýÖµÓÉÆå×ÓµÄÌùÍ¼¾ö¶¨
+	//å‡æ•°æ˜¯ä¸ºäº†è®©æ£‹å­çš„ä¸­å¿ƒè½åœ¨æ ¼ç‚¹ä¸Šï¼Œå…·ä½“çš„æ•°å€¼ç”±æ£‹å­çš„è´´å›¾å†³å®š
 
-	return 1;//±íÊ¾Âä×Ó³É¹¦
+	return 1;//è¡¨ç¤ºè½å­æˆåŠŸ
 }
