@@ -1,34 +1,33 @@
-//×÷Õß£ºÍõºÆÒã
-//´ËÎÄ¼ş°üº¬ÓÎÏ·µÄ½áËã½çÃæÏà¹ØµÄº¯Êı
+//æ­¤æ–‡ä»¶åŒ…å«æ¸¸æˆçš„ç»“ç®—ç•Œé¢ç›¸å…³çš„å‡½æ•°
 #include<easyx.h>
 #include<stdio.h>
-#include"Í¼ĞÎ½çÃæ.h"
+#include"å›¾å½¢ç•Œé¢.h"
 #include"huiqi.h"
 using namespace std;
 ExMessage msg2;
 IMAGE win, lose, duihuakuang;
 extern bool gamefinish;
 extern int shoushu;
-void loadfinishimage() {//¼ÓÔØ½áÊøÊ±µÄÌùÍ¼
-	loadimage(&win, "Ê¤Àû½çÃæ.png");
-	loadimage(&lose, "Ê§°Ü½çÃæ.png");
-	loadimage(&duihuakuang, "¶Ô»°¿ò.png", 250, 45);
+void loadfinishimage() {//åŠ è½½ç»“æŸæ—¶çš„è´´å›¾
+	loadimage(&win, "èƒœåˆ©ç•Œé¢.png");
+	loadimage(&lose, "å¤±è´¥ç•Œé¢.png");
+	loadimage(&duihuakuang, "å¯¹è¯æ¡†.png", 250, 45);
 }
-void wingame() {//Íæ¼Ò»ñÊ¤µÄÌùÍ¼
+void wingame() {//ç©å®¶è·èƒœçš„è´´å›¾
 	putimage(0, 0, &win);
 	while (1) {
 		getmessage(&msg2);
 		if (msg2.x >= 35 && msg2.x <= 730 && msg2.y >= 425 && msg2.y <= 470 && msg2.message == WM_LBUTTONDOWN) {
-			gameover = 0; return;//gameover=0±íÊ¾ÖØ¿ªÒ»¾Ö
+			gameover = 0; return;//gameover=0è¡¨ç¤ºé‡å¼€ä¸€å±€
 		}
 		if (msg2.x >= 35 && msg2.x <= 730 && msg2.y >= 570 && msg2.y <= 610 && msg2.message == WM_LBUTTONDOWN) {
-			gameover = 1; return;//gameover=1±íÊ¾ÓÎÏ·½áÊø£¬ÍË³öÓÎÏ·
+			gameover = 1; return;//gameover=1è¡¨ç¤ºæ¸¸æˆç»“æŸï¼Œé€€å‡ºæ¸¸æˆ
 		}
 	}
 }
-void losegame() {//ÓëÉÏÊöº¯ÊıÀàËÆ£¬Ìí¼ÓÁËÊ§°ÜÖ®ºóµÄ»ÚÆå¹¦ÄÜ
+void losegame() {//ä¸ä¸Šè¿°å‡½æ•°ç±»ä¼¼ï¼Œæ·»åŠ äº†å¤±è´¥ä¹‹åçš„æ‚”æ£‹åŠŸèƒ½
 	putimage(0, 0, &lose);
-	putimage(850, 499, &duihuakuang);//ÊÇ·ñ»ÚÆåµÄ°´Å¥ÌùÍ¼
+	putimage(850, 499, &duihuakuang);//æ˜¯å¦æ‚”æ£‹çš„æŒ‰é’®è´´å›¾
 	while (1) {
 		getmessage(&msg2);
 		if (msg2.x >= 35 && msg2.x <= 730 && msg2.y >= 425 && msg2.y <= 470 && msg2.message == WM_LBUTTONDOWN) {
@@ -38,7 +37,7 @@ void losegame() {//ÓëÉÏÊöº¯ÊıÀàËÆ£¬Ìí¼ÓÁËÊ§°ÜÖ®ºóµÄ»ÚÆå¹¦ÄÜ
 			gamefinish = true; shoushu = 0; gameover = 1; return;
 		}
 		if (msg2.x >= 850 && msg2.x <= 1100 && msg2.y >= 499 && msg2.y <= 544 && msg2.message == WM_LBUTTONDOWN) {
-			//Ñ¡ÁË»ÚÆå
+			//é€‰äº†æ‚”æ£‹
 			huiqi();
 			return;
 		}
