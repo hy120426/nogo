@@ -1,4 +1,3 @@
-//×÷Õß£ºÕÅÎõ
 #include<easyx.h>
 #include "huiqi.h"
 #include "jiegouti.h"
@@ -12,34 +11,34 @@ extern IMAGE bk, white;
 extern position board[9][9];
 void fuzhi() {
 	getimage(&fuzhipan,0, 0, 1200, 675);
-	//°Ñ»­Ãæ¸´ÖÆÏÂÀ´
+	//æŠŠç”»é¢å¤åˆ¶ä¸‹æ¥
 	copyshoushu = shoushu;
-	//°ÑÊÖÊıĞÅÏ¢¸´ÖÆÏÂÀ´
+	//æŠŠæ‰‹æ•°ä¿¡æ¯å¤åˆ¶ä¸‹æ¥
 	for (int i = 1; i <= 9; i++)
 		for (int j = 1; j <= 9; j++)
 			copy[i][j] = gameboard[i][j];
-	//°ÑÆåÅÌ¸´ÖÆÏÂÀ´
+	//æŠŠæ£‹ç›˜å¤åˆ¶ä¸‹æ¥
 }
 void reset()
 {
 	copyshoushu=shoushu = 0;
-	//Çå¿ÕÊÖÊı
+	//æ¸…ç©ºæ‰‹æ•°
 	jnow = inow = -2;
-	//Õâ¸öÓëÂä×ÓÌáÊ¾ºÍĞĞÆåËã·¨ÓĞ¹Ø
+	//è¿™ä¸ªä¸è½å­æç¤ºå’Œè¡Œæ£‹ç®—æ³•æœ‰å…³
 	getimage(&fuzhipan, 0, 0, 0, 0);
-	//Çå¿ÕÍ¼Ïñ
+	//æ¸…ç©ºå›¾åƒ
 	for (int i = 1; i <= 9; i++)
 		for (int j = 1; j <= 9; j++)
 			gameboard[i][j]=copy[i][j] = 0;
-	//Çå¿ÕÆåÅÌ
+	//æ¸…ç©ºæ£‹ç›˜
 }
 void huiqi() {
 	putimage(0, 0, &fuzhipan);
-	//°Ñ¸´ÖÆµÄ»­ÃæÌùÉÏÈ¥
+	//æŠŠå¤åˆ¶çš„ç”»é¢è´´ä¸Šå»
 	shoushu=copyshoushu;
-	//°ÑÊÖÊı¸ú¸´ÖÆµÄÄÚÈİÍ¬²½ÁË
+	//æŠŠæ‰‹æ•°è·Ÿå¤åˆ¶çš„å†…å®¹åŒæ­¥äº†
 	for (int i = 1; i <= 9; i++)
 		for (int j = 1; j <= 9; j++)
 			gameboard[i][j] = copy[i][j];
-	//°Ñ¸´ÖÆµÄÆåÅÌ¶Á½øÈ¥
+	//æŠŠå¤åˆ¶çš„æ£‹ç›˜è¯»è¿›å»
 }
