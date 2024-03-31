@@ -1,4 +1,3 @@
-//×÷Õß£ºÕÅÎõ
 #include "culculateqi.h"
 #include "tizino.h"
 #include "jiegouti.h"
@@ -45,13 +44,13 @@ void copypan::copyqipan(copypan* father) {
 	for (int i = 1; i <= 9; i++)
 		for (int j = 1; j <= 9; j++)
 			if (father->pan[i][j]) this->pan[i][j] = 3;
-} //¼Ì³ĞÉÏÒ»´ÎÉú³¤µÄÅÌ
+} //ç»§æ‰¿ä¸Šä¸€æ¬¡ç”Ÿé•¿çš„ç›˜
 void copypan::initpan() {
 	for (int i = 1; i <= 9; i++)
 		for (int j = 1; j <= 9; j++)
 			if (gameboard[i][j])
 				this->pan[i][j] = 3;
-}//ÏÈ°ÑµÚÒ»´ÎÉú³¤Ç°µÄÅÌÅª¹ıÀ´
+}//å…ˆæŠŠç¬¬ä¸€æ¬¡ç”Ÿé•¿å‰çš„ç›˜å¼„è¿‡æ¥
 void copypan::grow() {
 	for (int i = 1; i <= 9; i++)
 		for (int j = 1; j <= 9; j++) {
@@ -62,25 +61,25 @@ void copypan::grow() {
 				this->pan[i][j - 1] = this->pan[i][j - 1] == 3 ? 3 : 4;
 			}
 		}
-}//Éú³¤¹ı³Ì
+}//ç”Ÿé•¿è¿‡ç¨‹
 bool copypan::check() {
 	for (int i = 1; i <= 9; i++)
 		for (int j = 1; j <= 9; j++)
-			if (this->pan[i][j] == 0) return 1; //»¹ÓĞ¿Õ¸ñ
+			if (this->pan[i][j] == 0) return 1; //è¿˜æœ‰ç©ºæ ¼
 	return 0;
-}//¿´¿´ÆåÅÌ»¹ÓĞÃ»ÓĞ¿Õ×ÅµÄµã
+}//çœ‹çœ‹æ£‹ç›˜è¿˜æœ‰æ²¡æœ‰ç©ºç€çš„ç‚¹
 void dasan() {
-	copypan pan1[100]; //¸øÒ»ÏµÁĞµÄÉú³¤ÅÌ×¼±¸µÄ¿Õ¼ä
+	copypan pan1[100]; //ç»™ä¸€ç³»åˆ—çš„ç”Ÿé•¿ç›˜å‡†å¤‡çš„ç©ºé—´
 	pan1[0].initpan();
 	int i = 1;
 	for (i = 1; 1; i++) {
 		copypan* father = &pan1[i - 1];
 		pan1[i].copyqipan(father);
 		pan1[i].grow();
-		if (!pan1[i].check()) break; //Ã»ÓĞ¿ÕµÄµãÁË¾Í²»ÓÃÉú³¤ÁË
+		if (!pan1[i].check()) break; //æ²¡æœ‰ç©ºçš„ç‚¹äº†å°±ä¸ç”¨ç”Ÿé•¿äº†
 	}
-	int sanmax = i - 1; //ÕâÊ±£¬ÉÏÒ»´ÎÉú³¤µÄÅÌµÄ¿ÕÏÂµÄµã¾ÍÊÇÂú×ãÌõ¼şµÄµã
-	position kexuan[82]; //ÓĞÕâÃ´¶à¿ÉÑ¡µÄµã
+	int sanmax = i - 1; //è¿™æ—¶ï¼Œä¸Šä¸€æ¬¡ç”Ÿé•¿çš„ç›˜çš„ç©ºä¸‹çš„ç‚¹å°±æ˜¯æ»¡è¶³æ¡ä»¶çš„ç‚¹
+	position kexuan[82]; //æœ‰è¿™ä¹ˆå¤šå¯é€‰çš„ç‚¹
 	int kexuancounter = 0;
 	for (int i = 1; i <= 9; i++)
 		for (int j = 1; j <= 9; j++) {
@@ -89,11 +88,11 @@ void dasan() {
 				kexuan[kexuancounter].x = j;
 				kexuancounter++;
 			}
-		} //°Ñ¿ÉÑ¡µÄµã¼ÇÂ¼ÏÂÀ´
+		} //æŠŠå¯é€‰çš„ç‚¹è®°å½•ä¸‹æ¥
 	srand((unsigned)time(NULL) + 1);
 	int xuanzhong = rand() % kexuancounter;
 	inow = kexuan[xuanzhong].y;
-	jnow = kexuan[xuanzhong].x; //È»ºóÈ¥Ëæ»úÑ¡Ôñ
+	jnow = kexuan[xuanzhong].x; //ç„¶åå»éšæœºé€‰æ‹©
 	gameboard[inow][jnow] = 2;
 
 	putimage(board[inow - 1][jnow - 1].x - 22, board[inow - 1][jnow - 1].y - 30, &bk, SRCPAINT);
@@ -102,22 +101,22 @@ void dasan() {
 
 void xiaqi_difficult() {
 	if (shoushu > 33) { shoushu = 101; xiaqi_normal(); return; }
-	//ÖÕÅÌ½øĞĞ¸º¼«´óÖµËÑË÷
+	//ç»ˆç›˜è¿›è¡Œè´Ÿæå¤§å€¼æœç´¢
 	shoushu++;
 	for (int i = 1; i <= deep; i++) maxdep[i] = 0;
-	//maxdep[i]Êı×é±íÊ¾µÚi²ãµÄ×î´ó¼ÛÖµÊÇ¶àÉÙ£¬Õâ¸öÓï¾ä¶ÔÆä½øĞĞ³õÊ¼»¯
+	//maxdep[i]æ•°ç»„è¡¨ç¤ºç¬¬iå±‚çš„æœ€å¤§ä»·å€¼æ˜¯å¤šå°‘ï¼Œè¿™ä¸ªè¯­å¥å¯¹å…¶è¿›è¡Œåˆå§‹åŒ–
 	head[1] = new valuejudge; 
-	//Õâ¸ö½á¹¹ÌåÖĞ°üº¬Ò»¸öÆåÅÌ£¬Ò»¸öºá×ø±ê¡¢Ò»¸ö×İ×ø±ê
-	//Ò»¸ö¼ÛÖµ£¬Á½¸öÇ°ºóÖ¸Õë
+	//è¿™ä¸ªç»“æ„ä½“ä¸­åŒ…å«ä¸€ä¸ªæ£‹ç›˜ï¼Œä¸€ä¸ªæ¨ªåæ ‡ã€ä¸€ä¸ªçºµåæ ‡
+	//ä¸€ä¸ªä»·å€¼ï¼Œä¸¤ä¸ªå‰åæŒ‡é’ˆ
 	tail[1] = head[1];
 	for (int i = 1; i <= 9; i++)
 		for (int j = 1; j <= 9; j++)
-			if (!gameboard[i][j]) //Èç¹û¸ÃµãÃ»ÓĞÆå×Ó
-				if(supertizi_no(gameboard, i, j, 2))//Èç¹ûÔÚÕâÂä×Ó²»»á²úÉúÌá×Ó 
+			if (!gameboard[i][j]) //å¦‚æœè¯¥ç‚¹æ²¡æœ‰æ£‹å­
+				if(supertizi_no(gameboard, i, j, 2))//å¦‚æœåœ¨è¿™è½å­ä¸ä¼šäº§ç”Ÿæå­ 
 				{
 				int current = valuepoint(gameboard, i, j);
-				//Ëã³ö¸ÃµãµÄ¼ÛÖµ
-				if (current == maxdep[1]) { //Èç¹ûÓëµ±Ç°²ã×î´ó¼ÛÖµÏàµÈ£¬½øÈëÁ´±íÎ²
+				//ç®—å‡ºè¯¥ç‚¹çš„ä»·å€¼
+				if (current == maxdep[1]) { //å¦‚æœä¸å½“å‰å±‚æœ€å¤§ä»·å€¼ç›¸ç­‰ï¼Œè¿›å…¥é“¾è¡¨å°¾
 					tail[1]->next = new valuejudge;
 					tail[1]->next->prev = tail[1];
 					tail[1] = tail[1]->next;
@@ -131,8 +130,8 @@ void xiaqi_difficult() {
 					tail[1]->value = current;
 				}
 				if (current > maxdep[1]) {  
-					//Èç¹û´óÓÚµ±Ç°×î´ó¼ÛÖµ£¬¸üĞÂ×î´ó¼ÛÖµ£¬³ÉÎªĞÂµÄÁ´±íÍ·
-					//deleteÖ®Ç°µÄÄÚ´æ
+					//å¦‚æœå¤§äºå½“å‰æœ€å¤§ä»·å€¼ï¼Œæ›´æ–°æœ€å¤§ä»·å€¼ï¼Œæˆä¸ºæ–°çš„é“¾è¡¨å¤´
+					//deleteä¹‹å‰çš„å†…å­˜
 					maxdep[1] = current;
 					while (head[1] != tail[1]) {
 						head[1] = head[1]->next;
@@ -152,10 +151,10 @@ void xiaqi_difficult() {
 			}
 	if (maxdep[1] == 0) { dasan(); return; }
 	if (head[1] == tail[1]) { inow = head[1]->i; jnow = head[1]->j; } 
-	//Èç¹û¼ÛÖµ×î´óµãÎ¨Ò»£¬ÄÇ¾ÍÑ¡È¡Ëü
-	else {//·ñÔò£¬È¥Ëã¶ş²ã¼ÛÖµ
-		value1(2); //Õâ¸öº¯ÊıµÄ²Ù×÷ºÍÉÏÊöÄÚÈİ´óÍ¬Ğ¡Òì£¬²»ÔÙÏêÏ¸²ûÊö
-		//Î¨Ò»Çø±ğÔÚÓÚ"×î´ó¼ÛÖµµãÊÇ·ñÎ¨Ò»"µÄÅĞ¶Ï·½Ê½
+	//å¦‚æœä»·å€¼æœ€å¤§ç‚¹å”¯ä¸€ï¼Œé‚£å°±é€‰å–å®ƒ
+	else {//å¦åˆ™ï¼Œå»ç®—äºŒå±‚ä»·å€¼
+		value1(2); //è¿™ä¸ªå‡½æ•°çš„æ“ä½œå’Œä¸Šè¿°å†…å®¹å¤§åŒå°å¼‚ï¼Œä¸å†è¯¦ç»†é˜è¿°
+		//å”¯ä¸€åŒºåˆ«åœ¨äº"æœ€å¤§ä»·å€¼ç‚¹æ˜¯å¦å”¯ä¸€"çš„åˆ¤æ–­æ–¹å¼
 	}
 	gameboard[inow][jnow] = 2;
 
@@ -189,7 +188,7 @@ void value1(int depth) {
 
 					if (current > maxdep[depth]) {
 						maxdep[depth] = current;
-						//deleteÇ°ÃæµÄ
+						//deleteå‰é¢çš„
 						while (head[depth] != tail[depth]) {
 							head[depth] = head[depth]->next;
 							delete head[depth]->prev;
@@ -214,7 +213,7 @@ void value1(int depth) {
 		if (check->i != check->next->i || check->j != check->next->j) { weiyi = 0; break; }
 		check = check->next;
 	}
-	//Èç¹ûdeep1µÄÁ´±í´ÓÍ·µ½Î²´ú±íµÄ×ø±ê¶¼ÊÇÒ»ÑùµÄ£¬ÄÇÃ´ÈÏÎª×î´ó¼ÛÖµµãÒÑ¾­Î¨Ò»
+	//å¦‚æœdeep1çš„é“¾è¡¨ä»å¤´åˆ°å°¾ä»£è¡¨çš„åæ ‡éƒ½æ˜¯ä¸€æ ·çš„ï¼Œé‚£ä¹ˆè®¤ä¸ºæœ€å¤§ä»·å€¼ç‚¹å·²ç»å”¯ä¸€
 	if (weiyi) { inow = head[depth]->i; jnow = head[depth]->j; return; }
 	else { value2(depth + 1); return; }
 }
@@ -244,7 +243,7 @@ void value2(int depth) {
 
 					if (current > maxdep[depth]) {
 						maxdep[depth] = current;
-						//deleteÇ°ÃæµÄ
+						//deleteå‰é¢çš„
 						while (head[depth]!=tail[depth]) {
 							head[depth] = head[depth]->next;
 							delete head[depth]->prev;
