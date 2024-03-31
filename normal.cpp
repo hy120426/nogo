@@ -1,4 +1,3 @@
-//×÷Õß£ºÕÅÎõ
 #include "normal.h"
 #include "tizino.h"
 #include "jiegouti.h"
@@ -29,7 +28,7 @@ int about_value() {
 					v2++;
 				gameboard[i1][j1] = 0;
 			}
-		}//±éÀúÃ¿Ò»¸öµã¼ÆËãºÚÆå½ûÈëµãµÄÊıÄ¿
+		}//éå†æ¯ä¸€ä¸ªç‚¹è®¡ç®—é»‘æ£‹ç¦å…¥ç‚¹çš„æ•°ç›®
 
 	int v1 = 0;
 
@@ -41,8 +40,8 @@ int about_value() {
 					v1++;
 				gameboard[i1][j1] = 0;
 			}
-		}//°×Æå½ûÈëµãµÄÊıÄ¿
-	return v2 - v1; //×÷²î
+		}//ç™½æ£‹ç¦å…¥ç‚¹çš„æ•°ç›®
+	return v2 - v1; //ä½œå·®
 }
 int value_2(int dep,int llll) {
 	if (dep <= deepnormal) {
@@ -64,52 +63,52 @@ int value_2(int dep,int llll) {
 	else return about_value();
 }
 int value_1(int dep,int kkkk) {
-	if (dep <= deepnormal) { //Éî¶ÈĞ¡ÓÚÏŞ¶È£¬¼ÌĞøËÑË÷
+	if (dep <= deepnormal) { //æ·±åº¦å°äºé™åº¦ï¼Œç»§ç»­æœç´¢
 		int ans = 100000;
 		for (int i = 1; i <= 9; i++)
 			for (int j = 1; j <= 9; j++) {
-				if (!gameboard[i][j]) { //Èç¹ûÕâÒ»µãÃ»ÓĞ×Ó
-					gameboard[i][j] = 1; //Ä£Äâ³ÉºÚÆå
-					if (tizi_no(i, j, 1)) { //Èç¹ûÃ»ÓĞÔì³ÉÌá×Ó
-						int contenmp = value_2(dep + 1, ans); //¼ÆËã¼ÛÖµ
-						//value_2Õâ¸öº¯Êı¸ú1²»Í¬µÄÖ»ÓĞ£¬ËüÄ£ÄâµÄÊÇ°×Æå£¬²¢ÇÒÈ¡µÃÊÇ×î´óÖµ
-						ans = ans<contenmp? ans: contenmp; //ansÑ¡Ôñ×îĞ¡µÄÒ»¸ö
+				if (!gameboard[i][j]) { //å¦‚æœè¿™ä¸€ç‚¹æ²¡æœ‰å­
+					gameboard[i][j] = 1; //æ¨¡æ‹Ÿæˆé»‘æ£‹
+					if (tizi_no(i, j, 1)) { //å¦‚æœæ²¡æœ‰é€ æˆæå­
+						int contenmp = value_2(dep + 1, ans); //è®¡ç®—ä»·å€¼
+						//value_2è¿™ä¸ªå‡½æ•°è·Ÿ1ä¸åŒçš„åªæœ‰ï¼Œå®ƒæ¨¡æ‹Ÿçš„æ˜¯ç™½æ£‹ï¼Œå¹¶ä¸”å–å¾—æ˜¯æœ€å¤§å€¼
+						ans = ans<contenmp? ans: contenmp; //ansé€‰æ‹©æœ€å°çš„ä¸€ä¸ª
 					}
 					gameboard[i][j] = 0;
-					if (ans <= kkkk) return ans;  //¸º¼«´óÖµµÄ¼ôÖ¦£¬ÒòÎªmax(3,min(2,x))=3¡£
+					if (ans <= kkkk) return ans;  //è´Ÿæå¤§å€¼çš„å‰ªæï¼Œå› ä¸ºmax(3,min(2,x))=3ã€‚
 				}
 			}
 		return ans;
 	}
-	else return about_value(); //Éî¶È³¬¹ıÏŞ¶È£¬¹ÀÖµ
+	else return about_value(); //æ·±åº¦è¶…è¿‡é™åº¦ï¼Œä¼°å€¼
 }
 void xiaqi_normal() {
 	shoushu++;
 	deepnormal = 2;
 	if (shoushu >= 20) deepnormal = 3;
 	if (shoushu >= 33) deepnormal = 4;
-	//Ëæ¶Ô¾Ö½øĞĞÔö´óËÑË÷Éî¶È
+	//éšå¯¹å±€è¿›è¡Œå¢å¤§æœç´¢æ·±åº¦
 	if (shoushu > 100) deepnormal = 100;
-	//Õâ¸öÓÃdifficultÄÑ¶ÈµÄ²ßÂÔ£¬ÔİÊ±ÏÈ²»Ëµ
+	//è¿™ä¸ªç”¨difficultéš¾åº¦çš„ç­–ç•¥ï¼Œæš‚æ—¶å…ˆä¸è¯´
 	to_be_chosen[0].value[0] = -1000000;
-	//Õâ¸öÊı×é[0]±íÊ¾Ô¤±¸ÏÂµÄµã£¬[1]±íÊ¾ÕıÔÚ¼ÆËãµÄµã
+	//è¿™ä¸ªæ•°ç»„[0]è¡¨ç¤ºé¢„å¤‡ä¸‹çš„ç‚¹ï¼Œ[1]è¡¨ç¤ºæ­£åœ¨è®¡ç®—çš„ç‚¹
 	to_be_chosen[0].i = to_be_chosen[0].j = -1;
 
-	//²»ÊÇiºÍj´Ó1~9È¥¼ÆËã£¬¶øÊÇÓÒÏÂ->×óÏÂ->ÓÒÉÏ->×óÉÏµÄ¼ÆËãË³Ğò
-	//ÕâÑùµÄË³Ğò£¬Êµ¼ÊĞ§¹û¸üÓĞÏÂÆåµÄ¸Ğ¾õ
-	//ÎªÑİÊ¾·½±ã£¬½ØÍ¼Ê±Ö»½Ø¼ÆËãÓÒÏÂµÄ²¿·Ö
+	//ä¸æ˜¯iå’Œjä»1~9å»è®¡ç®—ï¼Œè€Œæ˜¯å³ä¸‹->å·¦ä¸‹->å³ä¸Š->å·¦ä¸Šçš„è®¡ç®—é¡ºåº
+	//è¿™æ ·çš„é¡ºåºï¼Œå®é™…æ•ˆæœæ›´æœ‰ä¸‹æ£‹çš„æ„Ÿè§‰
+	//ä¸ºæ¼”ç¤ºæ–¹ä¾¿ï¼Œæˆªå›¾æ—¶åªæˆªè®¡ç®—å³ä¸‹çš„éƒ¨åˆ†
 	for (int i = 5; i <= 9; i++)
 		for (int j = 5; j <= 9; j++) {
-			if (!gameboard[i][j]) { //Èç¹ûÕâÒ»µãÃ»ÓĞÆå×Ó
-				to_be_chosen[1].i = i; to_be_chosen[1].j = j; //¼ÇÂ¼ij×ø±ê
-				gameboard[i][j] = 2; //Ä£ÄâÎª2Æå×Ó£¨°×Æå£©
-				if (tizi_no(i, j, 2)) { //Èç¹ûÃ»ÓĞ²úÉúÌá×Ó
-					to_be_chosen[1].value[0] = value_1(1, to_be_chosen[0].value[0]);//¼ÆËã¼ÛÖµ
+			if (!gameboard[i][j]) { //å¦‚æœè¿™ä¸€ç‚¹æ²¡æœ‰æ£‹å­
+				to_be_chosen[1].i = i; to_be_chosen[1].j = j; //è®°å½•ijåæ ‡
+				gameboard[i][j] = 2; //æ¨¡æ‹Ÿä¸º2æ£‹å­ï¼ˆç™½æ£‹ï¼‰
+				if (tizi_no(i, j, 2)) { //å¦‚æœæ²¡æœ‰äº§ç”Ÿæå­
+					to_be_chosen[1].value[0] = value_1(1, to_be_chosen[0].value[0]);//è®¡ç®—ä»·å€¼
 				}
-				else to_be_chosen[1].value[0] = -10000000; //·ñÔò£¬¼Æ¼ÛÖµÎªÎŞÏŞĞ¡
+				else to_be_chosen[1].value[0] = -10000000; //å¦åˆ™ï¼Œè®¡ä»·å€¼ä¸ºæ— é™å°
 				if (to_be_chosen[1].value[0] > to_be_chosen[0].value[0]) to_be_chosen[0]=to_be_chosen[1];
-				//Èç¹û¸ÃµãµÄ¼ÛÖµ´óÓÚ[0]ºòÑ¡µã£¬½«[0]±ä³ÉËü
-				gameboard[i][j] = 0; //¸´Ô­
+				//å¦‚æœè¯¥ç‚¹çš„ä»·å€¼å¤§äº[0]å€™é€‰ç‚¹ï¼Œå°†[0]å˜æˆå®ƒ
+				gameboard[i][j] = 0; //å¤åŸ
 			}
 		}
 	for (int i = 5; i <= 9; i++)
