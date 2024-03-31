@@ -1,4 +1,3 @@
-//×÷Õß£ºÕÅÎõ
 #include "tizino.h"
 
 int tizi_judge=0;
@@ -33,15 +32,15 @@ void supertizi(int b[11][11],int row, int col, int yuan)
 	b[row][col] = kir;
 	return;
 }
-bool tizi_no(int i, int j, int yuan)//yuan±íÊ¾Æå×ÓµÄÑÕÉ«
+bool tizi_no(int i, int j, int yuan)//yuanè¡¨ç¤ºæ£‹å­çš„é¢œè‰²
 {
 	tizi_judge = 0;
 
 	tizi(i, j, yuan);
-	//Õâ¸öº¯ÊýÅÐ¶Ï´ËÎ»ÖÃµÄÆå×ÓÓÐÃ»ÓÐ±»Ìáµô£¬Èç¹ûÃ»ÓÐ£¬Ëü»á°Ñtizi_judgeÕâ¸öÕûÐÍ±äÁ¿±ä³É´óÓÚ0µÄÊý
+	//è¿™ä¸ªå‡½æ•°åˆ¤æ–­æ­¤ä½ç½®çš„æ£‹å­æœ‰æ²¡æœ‰è¢«ææŽ‰ï¼Œå¦‚æžœæ²¡æœ‰ï¼Œå®ƒä¼šæŠŠtizi_judgeè¿™ä¸ªæ•´åž‹å˜é‡å˜æˆå¤§äºŽ0çš„æ•°
 
-	if (!tizi_judge) return 0; //Èç¹ûtizi_judge»¹ÊÇ0£¬ÄÇ¾ÍËµÃ÷²úÉúÁËÌá×Ó£¬Ö±½Ó·µ»Ø0
-	tizi_judge = 0;//·ñÔòÏÈ°Ñtizi_judge±ä»Ø0
+	if (!tizi_judge) return 0; //å¦‚æžœtizi_judgeè¿˜æ˜¯0ï¼Œé‚£å°±è¯´æ˜Žäº§ç”Ÿäº†æå­ï¼Œç›´æŽ¥è¿”å›ž0
+	tizi_judge = 0;//å¦åˆ™å…ˆæŠŠtizi_judgeå˜å›ž0
 
 	if (gameboard[i + 1][j]) { tizi(i + 1, j, gameboard[i + 1][j]); if (!tizi_judge) return 0; }
 	tizi_judge = 0;
@@ -50,32 +49,32 @@ bool tizi_no(int i, int j, int yuan)//yuan±íÊ¾Æå×ÓµÄÑÕÉ«
 	if (gameboard[i][j + 1]) { tizi(i, j + 1, gameboard[i][j + 1]); if (!tizi_judge) return 0; }
 	tizi_judge = 0;
 	if (gameboard[i][j - 1]) { tizi(i, j - 1, gameboard[i][j - 1]); if (!tizi_judge) return 0; }
-	//ÅÐ¶ÏÉÏÏÂ×óÓÒËÄ¸ö·½ÏòÊÇ·ñÓÐÌá×Ó
+	//åˆ¤æ–­ä¸Šä¸‹å·¦å³å››ä¸ªæ–¹å‘æ˜¯å¦æœ‰æå­
 
-	return 1;//¶¼Ã»ÓÐ£¬¾Íreturn 1
+	return 1;//éƒ½æ²¡æœ‰ï¼Œå°±return 1
 }
 
 void tizi(int row, int col, int yuan)
 {
 	if (gameboard[row][col] == 0) { tizi_judge++; return; }
-	//Õâ¸öº¯ÊýÒª²»¶Ï¾­¹ýµÝ¹éµ÷ÓÃµÄ£¬µÝ¹éµ½ÕâÀïÊÇ0£¬¾ÍËµÃ÷Õâ¿éÆåÓÐÆø
-	//ÓÐÆø¾ÍÃ»ËÀ£¬¾Í²»ÊÇ±»Ìá×ÓµÄÆå£¬ËùÒÔ¸øtizi_judge++£¬È»ºóreturn
+	//è¿™ä¸ªå‡½æ•°è¦ä¸æ–­ç»è¿‡é€’å½’è°ƒç”¨çš„ï¼Œé€’å½’åˆ°è¿™é‡Œæ˜¯0ï¼Œå°±è¯´æ˜Žè¿™å—æ£‹æœ‰æ°”
+	//æœ‰æ°”å°±æ²¡æ­»ï¼Œå°±ä¸æ˜¯è¢«æå­çš„æ£‹ï¼Œæ‰€ä»¥ç»™tizi_judge++ï¼Œç„¶åŽreturn
 
 	if (gameboard[row][col] != yuan) return;
-	//×²µ½ÁËÁíÒ»¸öÑÕÉ«µÄÆå×Ó£¬ÕâÒ»µã¾Í²»ÊÇËüµÄÆøÁË£¬Ö±½Ó·µ»Ø
+	//æ’žåˆ°äº†å¦ä¸€ä¸ªé¢œè‰²çš„æ£‹å­ï¼Œè¿™ä¸€ç‚¹å°±ä¸æ˜¯å®ƒçš„æ°”äº†ï¼Œç›´æŽ¥è¿”å›ž
 
 	int kir = gameboard[row][col];
-	//ÕâÒ»µãÔ­À´µÄ×´Ì¬¼ÇÂ¼ÏÂÀ´
+	//è¿™ä¸€ç‚¹åŽŸæ¥çš„çŠ¶æ€è®°å½•ä¸‹æ¥
 
-	gameboard[row][col] = 3; //ÁîÆäÎª3£¬±ÜÃâËÀÑ­»··´¸´Êý
+	gameboard[row][col] = 3; //ä»¤å…¶ä¸º3ï¼Œé¿å…æ­»å¾ªçŽ¯åå¤æ•°
 
 	if (row > 1) tizi(row - 1, col, kir);
 	if (col > 1) tizi(row, col - 1, kir);
 	if (row < 9) tizi(row + 1, col, kir);
 	if (col < 9) tizi(row, col + 1, kir);
-	//ËÄ¸ö·½Ïò·Ö±ð×ßÒ»±é
+	//å››ä¸ªæ–¹å‘åˆ†åˆ«èµ°ä¸€é
 
 	gameboard[row][col] = kir;
-	//»¹Ô­
+	//è¿˜åŽŸ
 	return;
 }
