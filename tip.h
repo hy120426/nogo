@@ -1,0 +1,2 @@
+void returnwhite();
+void huiqireturn();
