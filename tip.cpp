@@ -1,21 +1,20 @@
-//×÷Õß£ºÍõºÆÒã
-//±¾ÎÄ¼ş°üº¬´¦ÀíÂä×ÓÌáÊ¾µÄº¯Êı
+//æœ¬æ–‡ä»¶åŒ…å«å¤„ç†è½å­æç¤ºçš„å‡½æ•°
 #include<easyx.h>
 #include"tip.h"
 #include "jiegouti.h"
 extern int inow, jnow, copyi, copyj;
 extern IMAGE bk, white;
 extern position board[9][9];
-void returnwhite() {//ÓÉÓÚµçÄÔÏÂÆåÊ±µÄÌùÍ¼ÎªºìÉ«£¬ÓÃÕâ¸öº¯Êı½«ºìÉ«Æå×Ó¸²¸ÇÎª°×É«
-	if (inow != -2) {//inow=-2Îª³õÊ¼×´Ì¬£¬Ò²¾ÍÊÇµÚÒ»²½£¬µÚÒ»²½Ã»ÓĞ¡°Ç°Ò»²½¡±
+void returnwhite() {//ç”±äºç”µè„‘ä¸‹æ£‹æ—¶çš„è´´å›¾ä¸ºçº¢è‰²ï¼Œç”¨è¿™ä¸ªå‡½æ•°å°†çº¢è‰²æ£‹å­è¦†ç›–ä¸ºç™½è‰²
+	if (inow != -2) {//inow=-2ä¸ºåˆå§‹çŠ¶æ€ï¼Œä¹Ÿå°±æ˜¯ç¬¬ä¸€æ­¥ï¼Œç¬¬ä¸€æ­¥æ²¡æœ‰â€œå‰ä¸€æ­¥â€
 		putimage(board[inow - 1][jnow - 1].x - 22, board[inow - 1][jnow - 1].y - 30, &bk, SRCPAINT);
 		putimage(board[inow - 1][jnow - 1].x - 22, board[inow - 1][jnow - 1].y - 30, &white, SRCAND);
-		//inow£¬jnow¼ÇÂ¼ÁËµçÄÔ×îĞÂÒ»´ÎÂä×ÓµÄÎ»ÖÃ
+		//inowï¼Œjnowè®°å½•äº†ç”µè„‘æœ€æ–°ä¸€æ¬¡è½å­çš„ä½ç½®
 	}
 }
-void huiqireturn() {//ÓÃÓÚ´¦Àí»ÚÆåÊ±Âä×ÓÌáÊ¾µÄÎÊÌâ
+void huiqireturn() {//ç”¨äºå¤„ç†æ‚”æ£‹æ—¶è½å­æç¤ºçš„é—®é¢˜
 	if (inow == -2)return;
 	putimage(board[copyi - 1][copyj - 1].x - 22, board[copyi - 1][copyj - 1].y - 30, &bk, SRCPAINT);
 	putimage(board[copyi - 1][copyj - 1].x - 22, board[copyi - 1][copyj - 1].y - 30, &white, SRCAND);
-	inow = copyi; jnow = copyj;//copyi£¬copyjÓÃÓÚ¼ÇÂ¼µçÄÔµ¹ÊıµÚ¶ş´ÎÂä×ÓµÄÎ»ÖÃ
+	inow = copyi; jnow = copyj;//copyiï¼Œcopyjç”¨äºè®°å½•ç”µè„‘å€’æ•°ç¬¬äºŒæ¬¡è½å­çš„ä½ç½®
 }
